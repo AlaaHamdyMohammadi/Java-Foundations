@@ -1,7 +1,14 @@
 public class LearnStrings {
     public static void main(String[] args) {
-       String text = "Hello new C++ course";
+       String firstName = "  Alaa  ";
 
-       System.out.println(text.replace("C++", "Java"));
+       System.out.format("'%s'", firstName.strip());
+       System.out.println("");
+       System.out.format("'%s'", firstName.stripLeading());
+       System.out.println("");
+       System.out.format("'%s'", firstName.stripTrailing());
+       System.out.println("");
+
+
     }
 }
