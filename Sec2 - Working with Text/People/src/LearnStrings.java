@@ -1,7 +1,8 @@
 public class LearnStrings {
     public static void main(String[] args) {
-        String fruit1 = "appla";
-        String fruit2 = "appla";
-        System.out.println(fruit1 == fruit2);
+       String text1 = "abcdfg";
+       String text2 = "ABCDEFG";
+       System.out.println(text1.toUpperCase());
+       System.out.println(text2.toLowerCase());
     }
 }
