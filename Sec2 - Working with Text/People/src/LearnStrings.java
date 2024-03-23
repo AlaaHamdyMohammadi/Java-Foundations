@@ -1,6 +1,6 @@
 public class LearnStrings {
     public static void main(String[] args) {
-       String phoneNumber = "(234) 333-5551";
+       String phoneNumber = "    (234) 333-5551".strip();
        String areaCode = parseAreaCode(phoneNumber);
        String exchange = parseExchange(phoneNumber);
        String lineNumber = parseLineNumber(phoneNumber);
@@ -24,4 +24,5 @@ public class LearnStrings {
         int dash = phoneNumber.indexOf("-");
         return phoneNumber.substring(dash + 1);
     }
+
 }
