@@ -1,5 +1,7 @@
 public class MathStuff {
     public static void main(String[] args) {
-        System.out.println(7 / 4f);
+        int x = 1;
+        System.out.println(++x);
+        System.out.println(x);
     }
 }
