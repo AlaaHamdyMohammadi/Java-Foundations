@@ -1,4 +1,6 @@
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 
 public class NumberStuff {
     public static void main(String[] args) {
@@ -8,5 +10,8 @@ public class NumberStuff {
         BigDecimal num4 = new BigDecimal("1.10");
         System.out.println(num1 - num2);
         System.out.println(num3.subtract(num4)); // I can't do that (num3 - num4) because these ara non primitives
+
+        MathContext mc = new MathContext(3, RoundingMode.HALF_UP);
+        System.out.println(new BigDecimal("81").sqrt(mc));
     }
 }
