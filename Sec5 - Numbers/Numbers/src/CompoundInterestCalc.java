@@ -1,8 +1,12 @@
 import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class CompoundInterestCalc {
     public static void main(String[] args) {
-        System.out.println("Result = " + calculate("10000.00", "0.08", 10, "1000"));
+        NumberFormat moneyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+        BigDecimal result = calculate("10000.00", "0.08", 10, "1000");
+        System.out.println("Result = " + moneyFormatter.format(result));
     }
 
     public static BigDecimal calculate(String p, String r, int y, String c){
