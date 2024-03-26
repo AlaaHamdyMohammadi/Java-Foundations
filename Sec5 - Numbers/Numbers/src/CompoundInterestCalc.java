@@ -6,7 +6,8 @@ public class CompoundInterestCalc {
     public static void main(String[] args) {
         NumberFormat moneyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         BigDecimal result = calculate("10000.00", "0.08", 10, "1000");
-        System.out.println("Result = " + moneyFormatter.format(result));
+//        System.out.println("Result = " + moneyFormatter.format(result));
+        System.out.printf("$%,(.4f%n", result);
     }
 
     public static BigDecimal calculate(String p, String r, int y, String c){
