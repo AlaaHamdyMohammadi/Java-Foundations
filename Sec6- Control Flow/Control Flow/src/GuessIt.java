@@ -6,11 +6,19 @@ public class GuessIt {
     public static int guessNumber(int number){
         Random random = new Random();
         int result = random.nextInt(number + 1);
-            System.out.printf("Your Guess = %d%n", result);
-        if(result == 3){
-            System.out.printf("Your Guess is right");
-        }else{
-            System.out.printf("Your Guess is wrong");
+        switch (result){
+            case 1:
+                System.out.println("The color is RED");
+                break;
+            case 2:
+                System.out.println("The color is yellow");
+                break;
+            case 3:
+                System.out.println("The color is green");
+                break;
+            default:
+                System.out.println("OUT");
+                break;
         }
         return result;
     }
