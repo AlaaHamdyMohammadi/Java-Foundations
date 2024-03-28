@@ -28,4 +28,8 @@ public class Card {
     public static void main(String[] args) {
         Card card1 = new Card(Suit.CLUBS, Rank.KING);
     }
+
+    public int getValue(){
+        return this.rank.getValue();
+    }
 }

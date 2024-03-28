@@ -13,4 +13,25 @@ public enum Rank {
     JACK,
     QUEEN,
     KING;
+
+    private int value;
+
+    public int getValue(){
+        return value;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
