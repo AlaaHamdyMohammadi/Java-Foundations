@@ -5,10 +5,7 @@ import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-public class Analyst implements Employee{
-    private String firstName;
-    private String lastName;
-    private LocalDate dob;
+public class Analyst extends Employee{
     private int projectCount = 0;
 
 

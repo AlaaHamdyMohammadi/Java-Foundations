@@ -5,10 +5,7 @@ import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-public class Manager implements Employee{
-    private String firstName;
-    private String lastName;
-    private LocalDate dob;
+public class Manager extends Employee{
     private int orgSize = 0;
     private int directReports = 0;
 

@@ -5,10 +5,7 @@ import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-public class CEO implements Employee{
-    private String firstName;
-    private String lastName;
-    private LocalDate dob;
+public class CEO extends Employee{
     private int avgStockPrice = 0;
 
 
