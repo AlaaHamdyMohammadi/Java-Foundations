@@ -41,8 +41,10 @@ public class Main {
                 case "CEO" -> new CEO(peopleMat.group());
                 default -> null;
             };
-            System.out.println(employee.toString());
-            totalSalaries += employee.getSalary();
+            if(employee != null){
+                System.out.println(employee.toString());
+                totalSalaries += employee.getSalary();
+            }
         }
         NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
         System.out.printf("The total should be %s%n", currencyInstance.format(totalSalaries));
