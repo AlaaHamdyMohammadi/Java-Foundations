@@ -30,7 +30,7 @@ public class Employee {
         return 0;
     };
 
-    @override
+    @Override
     public String toString(){
         return String.format("%s, %s: %s", lastName, firstName, moneyFormat.format(getSalary()));
     }
