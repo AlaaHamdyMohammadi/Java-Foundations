@@ -48,23 +48,10 @@ public class Main {
         while (peopleMat.find()) {
             totalSalaries += switch(peopleMat.group("role")){
                 case "Programmer" -> {
-                    String details = peopleMat.group("details");
-                    System.out.println(details);
-                    Matcher coderMat = coderPat.matcher(details);
-                    int salary = 0;
-                    if (coderMat.find()) {
-                        int locpd = Integer.parseInt(coderMat.group("locpd"));
-                        int yoe = Integer.parseInt(coderMat.group("yoe"));
-                        int iq = Integer.parseInt(coderMat.group("iq"));
-                        System.out.printf("Programmer loc: %s yoe: %s iq: %s%n", locpd, yoe, iq);
-                        salary = 3000 + locpd * yoe * iq;
-                    }else{
-                        salary = 3000;
-                    }
-                    String lastName = peopleMat.group("lastName");
-                    String firstName = peopleMat.group("firstName");
-                    System.out.printf("%s, %s: %s%n", lastName, firstName, NumberFormat.getCurrencyInstance().format(salary));
-                    yield salary;
+                    Programmer programmer = new Programmer(peopleMat.group());
+                    
+                    System.out.println(programmer.toString());
+                    yield programmer.getSalary();
                 }
                 case "Manager" -> {
                     String details = peopleMat.group("details");
@@ -116,7 +103,7 @@ public class Main {
 
             };
         }
-        System.out.printf("The total should be %s%n", totalSalaries);
+//        System.out.printf("The total should be %s%n", totalSalaries);
 
 
     }
