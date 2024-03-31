@@ -5,11 +5,11 @@ import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-public class CEO {
+public class CEO implements Employee{
     private String firstName;
     private String lastName;
     private LocalDate dob;
-    private avgStockPrice = 0;
+    private int avgStockPrice = 0;
 
 
     private final String ceotRegex = "\\w+=(?<avgStockPrice>\\w+)";

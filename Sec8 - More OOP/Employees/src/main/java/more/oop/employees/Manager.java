@@ -5,12 +5,12 @@ import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-public class Manager {
+public class Manager implements Employee{
     private String firstName;
     private String lastName;
     private LocalDate dob;
-    private orgSize = 0;
-    private directReports = 0;
+    private int orgSize = 0;
+    private int directReports = 0;
 
 
     private final String mgrRegex = "\\w+=(?<orgSize>\\w+),\\w+=(?<dr>\\w+)";
@@ -39,7 +39,7 @@ public class Manager {
     }
 
     public int getSalary(){
-        return 3500 + orgSize * dr;
+        return 3500 + orgSize * directReports;
     }
 
     //    @override
