@@ -9,10 +9,10 @@ import java.util.regex.Pattern;
 public class Programmer {
     private String firstName;
     private String lastName;
+    private LocalDate dob;
     private int linesOfCode = 0;
     private int yearsOfExp = 0;
     private int iq = 0;
-    private LocalDate dob;
 
 
 
@@ -23,7 +23,7 @@ public class Programmer {
     private final Pattern progPat = Pattern.compile(progRegex);
     private final NumberFormat moneyFormat = NumberFormat.getCurrencyInstance();
 
-    DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+    private final DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("M/d/yyyy");
 
     public Programmer(String personText){
     Matcher peopleMat = peoplePat.matcher(personText);
