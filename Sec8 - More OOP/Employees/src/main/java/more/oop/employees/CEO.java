@@ -2,7 +2,7 @@ package more.oop.employees;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-public class CEO extends Employee{
+public class CEO extends Employee implements IEmployee {
     private int avgStockPrice = 0;
 
 

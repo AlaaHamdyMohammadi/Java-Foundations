@@ -3,7 +3,7 @@ package more.oop.employees;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Programmer extends Employee {
+public class Programmer extends Employee implements IEmployee {
     private int linesOfCode = 0;
     private int yearsOfExp = 0;
     private int iq = 0;
