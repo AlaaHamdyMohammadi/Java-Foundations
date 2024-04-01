@@ -26,21 +26,14 @@ public class Main {
             Rubble, Betty, 4/4/1915, CEO, {avgStockPrice=300}
             """;
 
-        String peopleRegex = "(?<lastName>\\w+),\\s*(?<firstName>\\w+),\\s*(?<dob>\\d{1,2}/\\d{1,2}/\\d{4}),\\s*(?<role>\\w+)\\n";
-        Pattern peoplePat = Pattern.compile(peopleRegex);
-        Matcher peopleMat = peoplePat.matcher(people);
+//        String peopleRegex = "(?<lastName>\\w+),\\s*(?<firstName>\\w+),\\s*(?<dob>\\d{1,2}/\\d{1,2}/\\d{4}),\\s*(?<role>\\w+)\\n";
+//        Pattern peoplePat = Pattern.compile(peopleRegex);
+        Matcher peopleMat = Employee.peoplePat.matcher(people);
 
         int totalSalaries = 0;
         Employee employee = null;
         while (peopleMat.find()) {
-//            totalSalaries +=
-            employee = switch(peopleMat.group("role")){
-                case "Programmer" -> new Programmer(peopleMat.group());
-                case "Manager" -> new Manager(peopleMat.group());
-                case "Analyst" -> new Analyst(peopleMat.group());
-                case "CEO" -> new CEO(peopleMat.group());
-                default -> null;
-            };
+            employee = Employee.createEmployee(peopleMat.group());
             if(employee != null){
                 System.out.println(employee.toString());
                 totalSalaries += employee.getSalary();
