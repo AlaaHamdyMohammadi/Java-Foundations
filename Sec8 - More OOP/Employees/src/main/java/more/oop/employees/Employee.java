@@ -17,6 +17,12 @@ public abstract class Employee{
     protected final DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("M/d/yyyy");
     protected final NumberFormat moneyFormat = NumberFormat.getCurrencyInstance();
 
+    protected Employee(){
+        peopleMat = null;
+        firstName = "";
+        dob = null;
+    }
+
     public Employee(String personText){
         peopleMat = Employee.peoplePat.matcher(personText);
         if(peopleMat.find()) {
@@ -35,10 +41,10 @@ public abstract class Employee{
                 case "Manager" -> new Manager(employeeText);
                 case "Analyst" -> new Analyst(employeeText);
                 case "CEO" -> new CEO(employeeText);
-                default -> null;
+                default -> new DummyEmployee();
             };
         }else {
-            return null;
+            return new DummyEmployee();
         }
     }
 
@@ -51,5 +57,12 @@ public abstract class Employee{
     @Override
     public String toString(){
         return String.format("%s, %s: %s - %s", lastName, firstName, moneyFormat.format(getSalary()), moneyFormat.format(getBonus()));
+    }
+
+    private static final class DummyEmployee extends Employee{
+        @Override
+        public int getSalary(){
+            return 0;
+        }
     }
 }
