@@ -41,15 +41,11 @@ public abstract class Employee{
                 case "Manager" -> new Manager(employeeText);
                 case "Analyst" -> new Analyst(employeeText);
                 case "CEO" -> new CEO(employeeText);
-                default -> new Employee(){
-                    @Override
-                    public int getSalary(){
-                        return 0;
-                    }
+                default -> () -> 0; //Lambda expression
                 };
             };
         }else {
-            return new DummyEmployee();
+            return () -> 0; //Lambda expression
         }
     }
 
@@ -64,7 +60,7 @@ public abstract class Employee{
         return String.format("%s, %s: %s - %s", lastName, firstName, moneyFormat.format(getSalary()), moneyFormat.format(getBonus()));
     }
 
-    private static final class DummyEmployee extends Employee{
+    private static final class DummyEmployee extends Employee implements IEmployee{
         @Override
         public int getSalary(){
             return 0;

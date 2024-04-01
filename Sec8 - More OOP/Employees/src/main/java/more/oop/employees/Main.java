@@ -31,7 +31,7 @@ public class Main {
         Matcher peopleMat = Employee.peoplePat.matcher(people);
 
         int totalSalaries = 0;
-        Employee employee = null;
+        IEmployee employee = null;
         while (peopleMat.find()) {
             employee = Employee.createEmployee(peopleMat.group());
             System.out.println(employee.toString());
