@@ -40,6 +40,7 @@ public class Main {
         NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
         System.out.printf("The total should be %s%n", currencyInstance.format(totalSalaries));
 
-
+        Wirdo name = new Wirdo("Alaa", "Hamdy", 26);
+        Wirdo modifyName = new Wirdo(name.firstName() + "k");
     }
 }
