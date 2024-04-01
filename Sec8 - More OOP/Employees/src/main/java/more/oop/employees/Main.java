@@ -26,9 +26,10 @@ public class Main {
             Rubble, Betty, 4/4/1915, CEO, {avgStockPrice=300}
             """;
 
-//        String peopleRegex = "(?<lastName>\\w+),\\s*(?<firstName>\\w+),\\s*(?<dob>\\d{1,2}/\\d{1,2}/\\d{4}),\\s*(?<role>\\w+)\\n";
-//        Pattern peoplePat = Pattern.compile(peopleRegex);
+
         Matcher peopleMat = Employee.peoplePat.matcher(people);
+        Flyer flyer = new CEO("");
+        flyer.fly();
 
         int totalSalaries = 0;
         IEmployee employee = null;
