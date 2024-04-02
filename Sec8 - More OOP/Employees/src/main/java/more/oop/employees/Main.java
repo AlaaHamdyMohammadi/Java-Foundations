@@ -1,6 +1,8 @@
 package more.oop.employees;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,21 +38,14 @@ public class Main {
 
         int totalSalaries = 0;
         IEmployee employee = null;
+        List<IEmployee> employees = new ArrayList<>();
         while (peopleMat.find()) {
             employee = Employee.createEmployee(peopleMat.group());
-            if(employee instanceof Programmer prog){
-                System.out.println(prog.getIq());
-            }else if(employee instanceof Analyst an){
-                System.out.println(an.getSalary());
-            }else if(employee instanceof Manager man){
-                System.out.println(man.getSalary());
-            }else if(employee instanceof CEO){
-                System.out.println();
-            }else{
-                System.out.println();
-            }
-            System.out.println(employee.toString());
-            totalSalaries += employee.getSalary();
+            employees.add(employee);
+        }
+        for(IEmployee worker : employees){
+            System.out.println(worker.toString());
+            totalSalaries += worker.getSalary();
         }
         NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
         System.out.printf("The total should be %s%n", currencyInstance.format(totalSalaries));

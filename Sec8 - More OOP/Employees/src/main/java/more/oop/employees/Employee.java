@@ -43,11 +43,10 @@ public abstract class Employee{
                 case "CEO" -> new CEO(employeeText);
                 default -> () -> 0; //Lambda expression
                 };
-            };
+            }
+    }else {
+            return null; //Lambda expression
         }
-//        else {
-//            return null; //Lambda expression
-//        }
     }
 
     public abstract int getSalary();
