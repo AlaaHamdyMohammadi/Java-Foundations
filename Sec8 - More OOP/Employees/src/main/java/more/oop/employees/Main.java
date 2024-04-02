@@ -46,12 +46,10 @@ public class Main {
             employees.add(employee);
         }
 
-        List<String> removalName = new ArrayList<>();
-        removalName.add("Wilma5");
-        removalName.add("Barney2");
-        removalName.add("Fred3");
+        List<String> undesirable = List.of("Wilma5", "Barney2", "Fred3");
 
-        removeUndesirables(employees, removalName);
+
+        removeUndesirables(employees, undesirable);
 
         for(IEmployee worker: employees){
             System.out.println(worker.toString());
