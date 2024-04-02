@@ -28,13 +28,27 @@ public class Main {
 
 
         Matcher peopleMat = Employee.peoplePat.matcher(people);
-        Flyer flyer = new CEO("");
-        flyer.fly();
+
+        Programmer coder = new Programmer("");
+
+//        Flyer flyer = new CEO("");
+//        flyer.fly();
 
         int totalSalaries = 0;
         IEmployee employee = null;
         while (peopleMat.find()) {
             employee = Employee.createEmployee(peopleMat.group());
+            if(employee instanceof Programmer prog){
+                System.out.println(prog.getIq());
+            }else if(employee instanceof Analyst an){
+                System.out.println(an.getSalary());
+            }else if(employee instanceof Manager man){
+                System.out.println(man.getSalary());
+            }else if(employee instanceof CEO){
+                System.out.println();
+            }else{
+                System.out.println();
+            }
             System.out.println(employee.toString());
             totalSalaries += employee.getSalary();
         }

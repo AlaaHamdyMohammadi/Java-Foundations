@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class CEO extends Employee implements IEmployee, Flyer {
     private int avgStockPrice = 0;
-    private Pilot pilot = new Pilot(1000, true);
+    private Flyer flyer = new Pilot(1000, true);
 
     private final String ceotRegex = "\\w+=(?<avgStockPrice>\\w+)";
     private final Pattern ceoPat = Pattern.compile(ceotRegex);
@@ -23,23 +23,23 @@ public class CEO extends Employee implements IEmployee, Flyer {
     }
 
     public void fly() {
-        pilot.fly();
+        flyer.fly();
     }
 
     public int getHoursFlown() {
-        return pilot.getHoursFlown();
+        return flyer.getHoursFlown();
     }
 
     public void setHoursFlown(int hoursFlown) {
-        pilot.setHoursFlown(hoursFlown);
+        flyer.setHoursFlown(hoursFlown);
     }
 
     public boolean isIfr() {
-        return pilot.isIfr();
+        return flyer.isIfr();
     }
 
     public void setIfr(boolean ifr) {
-        pilot.setIfr(ifr);
+        flyer.setIfr(ifr);
     }
 }
 
