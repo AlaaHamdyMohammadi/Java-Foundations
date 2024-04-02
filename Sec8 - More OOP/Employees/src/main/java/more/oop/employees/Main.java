@@ -2,6 +2,7 @@ package more.oop.employees;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -50,12 +51,9 @@ public class Main {
         removalName.add("Barney2");
         removalName.add("Fred3");
 
-        for(IEmployee worker : employees){
-            if(worker instanceof Employee) {
-                if (removalName.contains(((Employee) worker).firstName)) {
-                    employees.remove(worker);
-                }
-            }
+        removeUndesirables(employees, removalName);
+
+        for(IEmployee worker: employees){
             System.out.println(worker.toString());
             totalSalaries += worker.getSalary();
         }
@@ -64,5 +62,17 @@ public class Main {
 
         Wirdo name = new Wirdo("Alaa", "Hamdy", 26);
         Wirdo modifyName = new Wirdo(name.firstName() + "k");
+    }
+
+    private static void removeUndesirables(List<IEmployee> employees, List<String> removalName){
+        for(Iterator<IEmployee> it = employees.iterator(); it.hasNext();) {
+            IEmployee worker = it.next();
+            if (worker instanceof Employee) {
+                Employee tmpWorker = (Employee) worker;
+                if (removalName.contains(tmpWorker.firstName)) {
+                    it.remove();
+                }
+            }
+        }
     }
 }
