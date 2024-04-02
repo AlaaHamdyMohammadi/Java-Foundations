@@ -2,6 +2,7 @@ package more.oop.employees;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,12 +39,23 @@ public class Main {
 
         int totalSalaries = 0;
         IEmployee employee = null;
-        List<IEmployee> employees = new ArrayList<>();
+        List<IEmployee> employees = new LinkedList<>();
         while (peopleMat.find()) {
             employee = Employee.createEmployee(peopleMat.group());
             employees.add(employee);
         }
+
+        List<String> removalName = new ArrayList<>();
+        removalName.add("Wilma5");
+        removalName.add("Barney2");
+        removalName.add("Fred3");
+
         for(IEmployee worker : employees){
+            if(worker instanceof Employee) {
+                if (removalName.contains(((Employee) worker).firstName)) {
+                    employees.remove(worker);
+                }
+            }
             System.out.println(worker.toString());
             totalSalaries += worker.getSalary();
         }
