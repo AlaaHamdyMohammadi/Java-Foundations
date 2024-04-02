@@ -1,4 +1,4 @@
-package more.oop.employees;
+package collections;
 
 import java.time.LocalDate;
 import java.text.NumberFormat;
@@ -46,20 +46,20 @@ public abstract class Employee{
             };
         }
 //        else {
-//            return null; //Lambda expression
+//            return () -> 0; //Lambda expression
 //        }
     }
 
-    public abstract int getSalary();
+//    public abstract int getSalary();
 
-    public double getBonus(){
-        return getSalary() * 0.10;
-    }
+//    public double getBonus(){
+//        return getSalary() * 0.10;
+//    }
 
-    @Override
-    public String toString(){
-        return String.format("%s, %s: %s - %s", lastName, firstName, moneyFormat.format(getSalary()), moneyFormat.format(getBonus()));
-    }
+//    @Override
+//    public String toString(){
+//        return String.format("%s, %s: %s - %s", lastName, firstName, moneyFormat.format(getSalary()), moneyFormat.format(getBonus()));
+//    }
 
     private static final class DummyEmployee extends Employee implements IEmployee{
         @Override
