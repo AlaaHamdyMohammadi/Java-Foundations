@@ -35,8 +35,8 @@ public class Main {
 
         Programmer coder = new Programmer("");
 
-//        Flyer flyer = new CEO("");
-//        flyer.fly();
+        Flyer flyer = new CEO("");
+        flyer.fly();
 
         int totalSalaries = 0;
         IEmployee employee = null;
@@ -46,9 +46,11 @@ public class Main {
             employees.add(employee);
         }
 
-        List<String> undesirable = List.of("Wilma5", "Barney2", "Fred3");
+        employees.remove(0);
+        employees.remove(1);
+        employees.remove(2);
 
-
+        List<String> undesirable = new ArrayList<>(List.of("Wilma5", "Barney2", "Fred3"));
         removeUndesirables(employees, undesirable);
 
         for(IEmployee worker: employees){
