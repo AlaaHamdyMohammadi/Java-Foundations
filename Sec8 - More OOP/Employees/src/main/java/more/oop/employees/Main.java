@@ -35,8 +35,8 @@ public class Main {
 
         Programmer coder = new Programmer("");
 
-        Flyer flyer = new CEO("");
-        flyer.fly();
+//        Flyer flyer = new CEO("");
+//        flyer.fly();
 
         int totalSalaries = 0;
         IEmployee employee = null;
