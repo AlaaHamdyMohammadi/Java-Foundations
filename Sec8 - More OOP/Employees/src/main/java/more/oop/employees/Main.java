@@ -46,9 +46,11 @@ public class Main {
             employees.add(employee);
         }
 
-        employees.remove(0);
-        employees.remove(1);
-        employees.remove(2);
+        IEmployee myEmp = employees.get(5);
+        System.out.println(employees.contains(myEmp));
+
+        IEmployee employee1 = Employee.createEmployee("Flinstone5, Fred5, 1/1/1900, Programmer, {locpd=5,yoe=10,iq=100}");
+        System.out.println(employees.contains(employee1));
 
         List<String> undesirable = new ArrayList<>(List.of("Wilma5", "Barney2", "Fred3"));
         removeUndesirables(employees, undesirable);

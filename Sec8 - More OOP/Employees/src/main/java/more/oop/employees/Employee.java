@@ -3,6 +3,7 @@ package more.oop.employees;
 import java.time.LocalDate;
 import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,6 +12,18 @@ public abstract class Employee{
     protected String lastName;
     protected LocalDate dob;
     protected final Matcher peopleMat;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // if the same objects in the same memory location
+        if (!(o instanceof Employee employee)) return false;
+        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(dob, employee.dob);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, dob);
+    }
 
     protected static final String peopleRegex = "(?<lastName>\\w+),\\s*(?<firstName>\\w+),\\s*(?<dob>\\d{1,2}/\\d{1,2}/\\d{4}),\\s*(?<role>\\w+)\\n";
     public static final Pattern peoplePat = Pattern.compile(peopleRegex);
