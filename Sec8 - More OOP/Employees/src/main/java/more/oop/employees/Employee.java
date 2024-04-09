@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class Employee{
+public abstract class Employee implements IEmployee{
     protected String firstName;
     protected String lastName;
     protected LocalDate dob;
@@ -54,10 +54,10 @@ public abstract class Employee{
                 case "Manager" -> new Manager(employeeText);
                 case "Analyst" -> new Analyst(employeeText);
                 case "CEO" -> new CEO(employeeText);
-                default -> null; //Lambda expression
+                default -> new DummyEmployee();
             };
         }else {
-            return null; //Lambda expression
+            return new DummyEmployee();
         }
     }
 
@@ -72,10 +72,16 @@ public abstract class Employee{
         return String.format("%s, %s: %s - %s", lastName, firstName, moneyFormat.format(getSalary()), moneyFormat.format(getBonus()));
     }
 
-    private static final class DummyEmployee extends Employee implements IEmployee{
+    private static final class DummyEmployee extends Employee {
         @Override
         public int getSalary(){
             return 0;
         }
     }
+
+    @Override
+    public int compareTo(IEmployee o){
+        Employee other = (Employee) o;
+        return this.lastName.compareTo(other.lastName);
+    };
 }

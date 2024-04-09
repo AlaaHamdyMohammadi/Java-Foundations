@@ -32,21 +32,19 @@ public class Main {
 
         Programmer coder = new Programmer("");
 
-//        Flyer flyer = new CEO("");
-//        flyer.fly();
 
         int totalSalaries = 0;
         IEmployee employee = null;
         List<IEmployee> employees = new LinkedList<>();
         while (peopleMat.find()) {
-            employee = Employee.createEmployee(peopleMat.group());
+            employee = (IEmployee) Employee.createEmployee(peopleMat.group());
             employees.add(employee);
         }
 
         IEmployee myEmp = employees.get(5);
         System.out.println(employees.contains(myEmp));
 
-        IEmployee employee1 = Employee.createEmployee("Flinstone5, Fred5, 1/1/1900, Programmer, {locpd=5,yoe=10,iq=100}");
+        IEmployee employee1 = (IEmployee) Employee.createEmployee("Flinstone5, Fred5, 1/1/1900, Programmer, {locpd=5,yoe=10,iq=100}");
         System.out.println(employees.contains(employee1));
 
         employees.sort(new Comparator<IEmployee>() {
@@ -60,7 +58,9 @@ public class Main {
             }
         });
 
-//        List<String> undesirable = new ArrayList<>(List.of("Wilma5", "Barney2", "Fred3"));
+        List<String> undesirable = new ArrayList<>(List.of("Wilma5", "Barney2", "Fred3"));
+        undesirable.sort(Comparator.naturalOrder());
+        System.out.println(undesirable);
 //        removeUndesirables(employees, undesirable);
 
         for(IEmployee worker: employees){
