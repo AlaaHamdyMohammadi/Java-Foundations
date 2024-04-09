@@ -54,10 +54,9 @@ public abstract class Employee{
                 case "Manager" -> new Manager(employeeText);
                 case "Analyst" -> new Analyst(employeeText);
                 case "CEO" -> new CEO(employeeText);
-                default -> () -> 0; //Lambda expression
-                };
-            }
-    }else {
+                default -> null; //Lambda expression
+            };
+        }else {
             return null; //Lambda expression
         }
     }

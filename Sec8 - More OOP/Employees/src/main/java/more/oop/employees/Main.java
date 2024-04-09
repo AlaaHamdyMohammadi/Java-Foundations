@@ -1,10 +1,7 @@
 package more.oop.employees;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -52,18 +49,29 @@ public class Main {
         IEmployee employee1 = Employee.createEmployee("Flinstone5, Fred5, 1/1/1900, Programmer, {locpd=5,yoe=10,iq=100}");
         System.out.println(employees.contains(employee1));
 
-        List<String> undesirable = new ArrayList<>(List.of("Wilma5", "Barney2", "Fred3"));
-        removeUndesirables(employees, undesirable);
+        employees.sort(new Comparator<IEmployee>() {
+            @Override
+            public int compare(IEmployee o1, IEmployee o2) {
+                if(o1 instanceof Employee emp1 && o2 instanceof Employee emp2){
+                    int lnameResult = emp1.lastName.compareTo(emp2.lastName);
+                    return lnameResult != 0 ? lnameResult : emp1.firstName.compareTo(emp2.firstName);
+                }
+                return 0;
+            }
+        });
+
+//        List<String> undesirable = new ArrayList<>(List.of("Wilma5", "Barney2", "Fred3"));
+//        removeUndesirables(employees, undesirable);
 
         for(IEmployee worker: employees){
             System.out.println(worker.toString());
             totalSalaries += worker.getSalary();
         }
-        NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
-        System.out.printf("The total should be %s%n", currencyInstance.format(totalSalaries));
-
-        Wirdo name = new Wirdo("Alaa", "Hamdy", 26);
-        Wirdo modifyName = new Wirdo(name.firstName() + "k");
+//        NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
+//        System.out.printf("The total should be %s%n", currencyInstance.format(totalSalaries));
+//
+//        Wirdo name = new Wirdo("Alaa", "Hamdy", 26);
+//        Wirdo modifyName = new Wirdo(name.firstName() + "k");
     }
 
     private static void removeUndesirables(List<IEmployee> employees, List<String> removalName){
