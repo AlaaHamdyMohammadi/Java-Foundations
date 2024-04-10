@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
@@ -32,8 +33,9 @@ public class StreamsStuff {
         int sum = people.lines()
 //                .map(s -> Employee.createEmployee(s)) // Lambda
                 .map(Employee::createEmployee) // Method reference
-//                .mapToInt(IEmployee::getSalary)
-                .mapToInt(e -> e.getSalary())
+                .map(e -> (Employee)e)
+                .sorted(Comparator.comparing(Employee::getLastName).thenComparing(Employee::getFirstName))
+                .mapToInt(IEmployee::getSalary)
                 .sum();
         System.out.println(sum);
 
