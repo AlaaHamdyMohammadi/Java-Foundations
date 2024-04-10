@@ -36,7 +36,7 @@ public class Main {
         int totalSalaries = 0;
         IEmployee employee = null;
 //        List<IEmployee> employees = new ArrayList<>(16);
-        Set<IEmployee> employees = new HashSet<>();
+        Set<IEmployee> employees = new TreeSet<>();
 
         while (peopleMat.find()) {
             employee = (IEmployee) Employee.createEmployee(peopleMat.group());
