@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class StreamsStuff {
@@ -34,6 +35,8 @@ public class StreamsStuff {
 //                .map(s -> Employee.createEmployee(s)) // Lambda
                 .map(Employee::createEmployee) // Method reference
                 .map(e -> (Employee)e)
+                .filter(e -> e.getSalary() > 5000)
+                .collect(Collectors.toSet()).stream() // To delete duplicate
                 .sorted(Comparator.comparing(Employee::getLastName).thenComparing(Employee::getFirstName))
                 .mapToInt(IEmployee::getSalary)
                 .sum();
