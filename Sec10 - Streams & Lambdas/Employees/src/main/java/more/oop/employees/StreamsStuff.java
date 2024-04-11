@@ -62,7 +62,7 @@ public class StreamsStuff {
                 .collect(Collectors.toSet()).stream() // To delete duplicate
                 .sorted(Comparator.comparing(Employee::getLastName).thenComparing(Employee::getFirstName))
                 .mapToInt(IEmployee::getSalary)
-                .sum();
+                .reduce(0, (a, b) -> a + b);
         System.out.println(sum);
 
         try {
