@@ -3,10 +3,7 @@ package more.oop.employees;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -30,6 +27,15 @@ public class StreamsStuff {
             Flinstone5, Wilma5, 3/3/1910, Analyst, {projectCount=9}
             Rubble, Betty, 4/4/1915, CEO, {avgStockPrice=300}
             """;
+
+        people.lines()
+                .map(Employee::createEmployee)
+                .map(e -> (Employee)e)
+                .map(Employee::getFirstName)
+                .map(firstName -> firstName.split(""))
+                .flatMap(Arrays::stream)
+                .distinct()
+                .forEach(System.out::println);
 
         int sum = people.lines()
 //                .map(s -> Employee.createEmployee(s)) // Lambda
