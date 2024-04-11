@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -27,6 +28,22 @@ public class StreamsStuff {
             Flinstone5, Wilma5, 3/3/1910, Analyst, {projectCount=9}
             Rubble, Betty, 4/4/1915, CEO, {avgStockPrice=300}
             """;
+
+        Predicate<Employee> dummySelector = e -> e.getLastName().equals("N/A");
+        boolean allOver = people.lines()
+                .map(Employee::createEmployee)
+                .map(e -> (Employee)e)
+                .filter(dummySelector.negate())
+                .allMatch(e -> e.getSalary() > 2000);
+        System.out.println(allOver);
+
+        // Optional allow us to avoid null values of variables
+        Optional<Employee> optionEmp = people.lines()
+                .map(Employee::createEmployee)
+                .map(e -> (Employee)e)
+                .filter(dummySelector.negate())
+                .findFirst();
+        System.out.println(optionEmp.map(Employee::getFirstName).orElse("NoBody"));
 
         people.lines()
                 .map(Employee::createEmployee)
